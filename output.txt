@@ -1,0 +1,46 @@
+Group Memebers: Joe Willert, Weston Mckenney, Brandon Broppre
+Repository: Joseph-Willert  https://github.com/Joseph-Willert/csci415-01
+
+
+CPU Run Time: 0.38205 sec
+
+GPU Memory Allocation: 0.11576 sec
+
+GPU Copy to Device: 0.006855 sec
+
+GPU Kernel Run Time: 0.002788 sec
+
+GPU Copy to to Host: 0.010656 sec
+
+Total Time: 0.13616 sec
+Result comparison passed.
+
+
+
+CPU Run Time: 0.38196 sec
+
+GPU Memory Allocation: 0.11643 sec
+
+GPU Copy to Device: 0.006936 sec
+
+GPU Kernel Run Time: 0.002781 sec
+
+GPU Copy to to Host: 0.010958 sec
+
+Total Time: 0.13721 sec
+Result comparison passed.
+
+
+
+CPU Run Time: 0.38176 sec
+
+GPU Memory Allocation: 0.11139 sec
+
+GPU Copy to Device: 0.007746 sec
+
+GPU Kernel Run Time: 0.002792 sec
+
+GPU Copy to to Host: 0.010336 sec
+
+Total Time: 0.13236 sec
+Result comparison passed.

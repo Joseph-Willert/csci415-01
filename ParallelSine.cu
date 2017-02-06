@@ -38,7 +38,8 @@ void sine_serial(float *input, float *output)
          denom *= (2*j+2) * (2*j+3); 
          sign *= -1; 
       } 
-      output[i] = value; 
+      output[i] = value;
+      
     }
 }
 
@@ -48,22 +49,23 @@ void sine_serial(float *input, float *output)
 
 __global__ void sine_parallel(float *input, float *output)
 {
-  int i;
+      int block_id = blockIdx.x + gridDim.x * blockIdx.y;
+      int idx = blockDim.x * block_id + threadIdx.x;
 
-  for (i=0; i<N; i++) {
-      float value = input[i];
-      float numer = input[i] * input[i] * input[i];
+ 
+      float value = input[idx];
+      float numer = input[idx] * input[idx] * input[idx];
       int denom = 6; // 3!
       int sign = -1;
       for (int j=1; j<=TERMS;j++)
       {
          value += sign * numer / denom;
-         numer *= input[i] * input[i];
+         numer *= input[idx] * input[idx];
          denom *= (2*j+2) * (2*j+3);
          sign *= -1;
       }
-      output[i] = value;
-    }
+ 
+      output[idx] = value;
 }
 
 
@@ -155,7 +157,8 @@ int main (int argc, char **argv)
 
   // launch the kernel
   long long kernel_start_time = start_timer();
-  sine_parallel<<<12056, 1024>>>(d_out, d_in);
+  sine_parallel<<<12057, 1024>>>(d_in, d_out);
+  cudaThreadSynchronize();
   long long kernel_time = stop_timer(kernel_start_time, "\nGPU Kernel Run Time");
 
 
